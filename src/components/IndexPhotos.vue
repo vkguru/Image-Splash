@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .photo {
   position: relative;
   width: 80%;

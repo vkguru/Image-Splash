@@ -1,19 +1,27 @@
 <template>
-  <header class="header">
-    <div>
-      <h3 class="header-text">
-        Search Result for <span>"{{ title }}"</span>
-      </h3>
+  <div>
+    <header class="header">
+      <div>
+        <h3 class="header-text">
+          Search Results for <span>"{{ title }}"</span>
+        </h3>
+      </div>
+    </header>
+    <div class="photo">
+      <div v-for="photo in allPhotos" :key="photo.id" class="photo_grid">
+        <img
+          class="image_grid"
+          :src="`${photo.urls.regular}`"
+          :alt="`${photo.alt_description}`"
+        />
+        <div class="image_des">
+          <p>{{ photo.user.name }}</p>
+          <p class="loc">{{ photo.user.location }}</p>
+          <p v-if="photo.user.location === null">-</p>
+        </div>
+      </div>
     </div>
-
-    <div v-for="photo in allPhotos" :key="photo.id">
-      <img
-        class="image_grid"
-        :src="`${photo.results.urls.regular}`"
-        :alt="`${photo.alt_description}`"
-      />
-    </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -28,7 +36,7 @@ export default {
   methods: {
     ...mapActions(["photoSearch"])
   },
-  computed: mapGetters(["result"]),
+  computed: mapGetters(["allPhotos"]),
   created() {
     this.photoSearch(this.title);
   }

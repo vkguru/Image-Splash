@@ -29,8 +29,8 @@ const actions = {
       }
     );
 
-    commit("result", res.data);
-    console.log(res.data);
+    commit("getPhotos", res.data.results);
+    console.log(res.data.results);
   }
 };
 
