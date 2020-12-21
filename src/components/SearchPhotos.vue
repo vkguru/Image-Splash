@@ -9,17 +9,30 @@
     </header>
     <div class="photo">
       <div v-for="photo in allPhotos" :key="photo.id" class="photo_grid">
-        <img
-          class="image_grid"
-          :src="`${photo.urls.regular}`"
-          :alt="`${photo.alt_description}`"
-        />
+        <PuSkeleton circle height="50px">
+          <img
+            @click="image(photo)"
+            class="image_grid"
+            :src="`${photo.urls.regular}`"
+            :alt="`${photo.alt_description}`"
+          />
+        </PuSkeleton>
         <div class="image_des">
-          <p>{{ photo.user.name }}</p>
-          <p class="loc">{{ photo.user.location }}</p>
-          <p v-if="photo.user.location === null">-</p>
+          <PuSkeleton>
+            <p>{{ photo.user.name }}</p>
+          </PuSkeleton>
+          <PuSkeleton>
+            <p class="loc">{{ photo.user.location }}</p>
+          </PuSkeleton>
+          <PuSkeleton>
+            <p v-if="photo.user.location === null">-</p>
+          </PuSkeleton>
         </div>
       </div>
+    </div>
+    <div v-if="this.img" style="display: block;" class="modal">
+      <p @click="close()" class="close">X</p>
+      <div v-html="img" class="modal-data"></div>
     </div>
   </div>
 </template>
@@ -30,11 +43,24 @@ export default {
   name: "SearchPhotos",
   data() {
     return {
-      title: sessionStorage.getItem("search")
+      title: sessionStorage.getItem("search"),
+      img: ""
     };
   },
   methods: {
-    ...mapActions(["photoSearch"])
+    ...mapActions(["photoSearch", "imageClicked"]),
+    image(id) {
+      this.img = `
+        <img src="${id.urls.full}"/>
+        <div class="para">
+          <p>${id.user.name}</p>
+          <p>${id.user.location}</p>
+        </div>
+      `;
+    },
+    close() {
+      this.img = "";
+    }
   },
   computed: mapGetters(["allPhotos"]),
   created() {
@@ -43,13 +69,20 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header-text {
   font-size: 3rem;
   color: #394b68;
 
   & span {
     color: #7a879c;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 7rem 2rem;
+    text-align: center;
   }
 }
 </style>
