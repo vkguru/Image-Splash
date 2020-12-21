@@ -227,5 +227,9 @@ export default {
   .modal-data img {
     height: 300px;
   }
+
+  #search {
+    width: 100%;
+  }
 }
 </style>
