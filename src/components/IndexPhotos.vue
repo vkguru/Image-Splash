@@ -55,6 +55,18 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes pulse-bg {
+  0% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #e5e5e5;
+  }
+  100% {
+    background-color: #f5f5f5;
+  }
+}
+
 .photo {
   position: relative;
   width: 80%;
@@ -67,8 +79,11 @@ export default {
 }
 
 .photo_grid {
+  min-height: 200px;
   height: auto;
   cursor: zoom-in;
+  background: #f5f5f5;
+  animation: pulse-bg 1.5s infinite;
 
   &:nth-child(2) {
     grid-row-end: span 1.2;
@@ -171,6 +186,12 @@ export default {
     text-transform: capitalize;
     color: #7a879c;
     font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .photo_grid .image_des {
+    width: 31.2%;
   }
 }
 
