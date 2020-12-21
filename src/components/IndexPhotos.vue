@@ -83,7 +83,7 @@ export default {
   height: auto;
   cursor: zoom-in;
   background: #f5f5f5;
-  animation: pulse-bg 1.5s infinite;
+  animation: pulse-bg 1.2s infinite;
 
   &:nth-child(2) {
     grid-row-end: span 1.2;
@@ -160,7 +160,7 @@ export default {
     object-fit: cover;
     border-radius: 10px 10px 0 0;
     background: rgb(226, 226, 226);
-    animation: pulse-bg 1.5s infinite;
+    animation: pulse-bg 1.2s infinite;
   }
 }
 
