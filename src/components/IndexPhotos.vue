@@ -160,6 +160,7 @@ export default {
     object-fit: cover;
     border-radius: 10px 10px 0 0;
     background: rgb(226, 226, 226);
+    animation: pulse-bg 1.5s infinite;
   }
 }
 
