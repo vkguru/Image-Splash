@@ -2,15 +2,16 @@
   <div>
     <header class="header">
       <div>
-        <h3 v-if="loading === false" class="header-text">
-          Search Results for <span>"{{ title }}"</span>
-        </h3>
-        <h3 v-else class="header-text">
+        <h3 class="header-text" v-show="loading === true">
           Searching for <span>"{{ title }}"</span>
+        </h3>
+        <h3 v-show="loading === false" class="header-text">
+          Search Results for <span>"{{ title }}"</span>
         </h3>
       </div>
     </header>
-    <div class="photo">
+    <Loading v-show="loading === true" />
+    <div v-show="loading === false" class="photo">
       <div v-for="photo in allPhotos" :key="photo.id" class="photo_grid">
         <img
           @click="image(photo)"
@@ -34,14 +35,23 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import Loading from "./Loading";
 export default {
   name: "SearchPhotos",
+  components: {
+    Loading
+  },
   data() {
     return {
       title: sessionStorage.getItem("search"),
-      img: "",
-      loading: true
+      loading: true,
+      img: ""
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.setLoadingState(false);
+    }, 3000);
   },
   methods: {
     ...mapActions(["photoSearch", "imageClicked"]),
@@ -56,14 +66,14 @@ export default {
     },
     close() {
       this.img = "";
+    },
+    setLoadingState(value) {
+      this.loading = value;
     }
   },
   computed: mapGetters(["allPhotos"]),
   created() {
     this.photoSearch(this.title);
-    if (this.photoSearch(this.title)) {
-      this.loading = false;
-    }
   }
 };
 </script>

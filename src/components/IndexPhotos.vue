@@ -29,6 +29,7 @@ export default {
   name: "IndexPhotos",
   data() {
     return {
+      loading: true,
       img: ""
     };
   },
