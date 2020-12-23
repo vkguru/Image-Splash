@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="photo_grid">
+      <div class="photo_grid loading">
         <div class="p_load">
           <p class="loading-p"></p>
           <p class="loading-p"></p>
@@ -124,6 +124,29 @@ export default {
     height: 30px;
     background: rgb(228, 227, 227);
     margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .photo_grid .p_load {
+    width: 100%;
+  }
+
+  .photo_grid {
+    & .p_load {
+      width: 100%;
+    }
+  }
+
+  .photo_grid:nth-child(3) .p_load,
+  .photo_grid:nth-child(4) .p_load,
+  .photo_grid:nth-child(5) .p_load,
+  .photo_grid:nth-child(7) .p_load {
+    margin-top: 4rem;
+  }
+
+  .photo_grid:nth-child(5).loading {
+    height: 200px;
   }
 }
 </style>
