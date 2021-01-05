@@ -1,4 +1,6 @@
-# cowry
+# Image Splash
+
+Image splash is an image search app that relies on Splash API.
 
 ## Project setup
 ```

@@ -19,10 +19,12 @@
           :src="`${photo.urls.regular}`"
           :alt="`${photo.alt_description}`"
         />
-        <div class="image_des">
-          <p>{{ photo.user.name }}</p>
-          <p class="loc">{{ photo.user.location }}</p>
-          <p v-if="photo.user.location === null">-</p>
+        <div class="overlay">
+          <div class="image_des">
+            <p>{{ photo.user.name }}</p>
+            <p class="loc">{{ photo.user.location }}</p>
+            <p v-if="photo.user.location === null">-</p>
+          </div>
         </div>
       </div>
     </div>

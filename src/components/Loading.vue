@@ -116,7 +116,7 @@ export default {
   margin-top: 4rem;
   padding: 2rem;
   z-index: 2;
-  width: 31%;
+  width: 100%;
   color: #fff;
 
   & .loading-p {

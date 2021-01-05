@@ -8,10 +8,12 @@
           :src="`${photo.urls.regular}`"
           :alt="`${photo.alt_description}`"
         />
-        <div class="image_des">
-          <p>{{ photo.user.name }}</p>
-          <p class="loc">{{ photo.user.location }}</p>
-          <p v-if="photo.user.location === null">-</p>
+        <div class="overlay">
+          <div class="image_des">
+            <p>{{ photo.user.name }}</p>
+            <p class="loc">{{ photo.user.location }}</p>
+            <p v-if="photo.user.location === null">-</p>
+          </div>
         </div>
       </div>
     </div>
@@ -80,6 +82,7 @@ export default {
 }
 
 .photo_grid {
+  position: relative;
   min-height: 200px;
   height: auto;
   cursor: zoom-in;
@@ -115,17 +118,21 @@ export default {
     object-fit: cover;
   }
 
+  & .overlay {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-image: linear-gradient(transparent 36%, rgba(0, 0, 0, 0.87));
+  }
+
   & .image_des {
     position: absolute;
-    margin-top: -7rem;
-    padding: 2rem;
+    bottom: 20px;
     z-index: 2;
-    width: 31%;
-    background: linear-gradient(
-      to bottom,
-      rgba(95, 95, 98, 0),
-      rgba(0, 0, 0, 0.97)
-    );
     color: #fff;
 
     & p {
