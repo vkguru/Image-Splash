@@ -19,7 +19,7 @@
           :src="`${photo.urls.regular}`"
           :alt="`${photo.alt_description}`"
         />
-        <div class="overlay">
+        <div class="overlay" @click="image(photo)">
           <div class="image_des">
             <p>{{ photo.user.name }}</p>
             <p class="loc">{{ photo.user.location }}</p>
