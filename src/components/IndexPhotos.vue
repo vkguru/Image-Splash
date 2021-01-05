@@ -200,7 +200,7 @@ export default {
 
 @media screen and (min-width: 1300px) {
   .photo_grid .image_des {
-    width: 31.2%;
+    width: 90%;
   }
 }
 
