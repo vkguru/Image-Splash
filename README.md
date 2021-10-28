@@ -1,6 +1,6 @@
 # Image Splash
 
-Image splash is an image search app that relies on Splash API.
+Image splash is an image search app that relies on Unsplash's API.
 
 ## Project setup
 ```
