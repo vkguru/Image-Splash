@@ -8,7 +8,7 @@ const getters = {
   allPhotos: state => state.photos
 };
 
-const id = "kkuoQFP-8_Rfec480oIax6jx9vuQl5VRm6eREDV6fwU";
+const id = process.env.VUE_APP_ID;
 
 const actions = {
   async fetchPhotos({ commit }) {
@@ -17,7 +17,7 @@ const actions = {
     );
 
     commit("getPhotos", res.data);
-    console.log(res.data);
+    // console.log(res.data);
   },
   async photoSearch({ commit }, title) {
     const res = await axios.get(
@@ -30,7 +30,7 @@ const actions = {
     );
 
     commit("getPhotos", res.data.results);
-    console.log(res.data.results);
+    // console.log(res.data.results);
   },
   async imageClicked({ commit }, clicked) {
     const res = await axios.get(
@@ -43,7 +43,7 @@ const actions = {
     );
 
     commit("clickedPhoto", res.data.results);
-    console.log(res.data.results);
+    // console.log(res.data.results);
   }
 };
 

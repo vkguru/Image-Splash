@@ -50,11 +50,11 @@ export default {
       img: ""
     };
   },
-  mounted() {
-    setTimeout(() => {
-      this.setLoadingState(false);
-    }, 3000);
-  },
+  // mounted() {
+  //   setTimeout(() => {
+  //     this.setLoadingState(false);
+  //   }, 3000);
+  // },
   methods: {
     ...mapActions(["photoSearch", "imageClicked"]),
     image(id) {
@@ -71,11 +71,20 @@ export default {
     },
     setLoadingState(value) {
       this.loading = value;
+    },
+    async getPhotos() {
+      await this.photoSearch(this.title)
+        .then(res => {
+          this.setLoadingState(false);
+          console.log(res);
+        })
+        .catch(e => console.log(e));
     }
   },
   computed: mapGetters(["allPhotos"]),
   created() {
-    this.photoSearch(this.title);
+    // this.photoSearch(this.title);
+    this.getPhotos();
   }
 };
 </script>

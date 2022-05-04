@@ -18,6 +18,7 @@
 
 <script>
 import { mapActions } from "vuex";
+// import router from "vue-router";
 export default {
   name: "Form",
   data() {
@@ -29,7 +30,8 @@ export default {
     ...mapActions(["photoSearch"]),
     onSubmit(e) {
       e.preventDefault();
-      window.location = "/search/";
+      this.$router.push(`/search`);
+      // window.location = "/search/";
       sessionStorage.setItem("search", this.inputs);
       console.log(this.inputs);
       this.photoSearch(this.inputs);
